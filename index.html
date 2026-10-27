@@ -1920,7 +1920,7 @@
           </div>
 
           <div class="rsvp-counter" aria-label="Adults attending">
-            <div><span class="rsvp-counter-title">Adults</span><span class="rsvp-counter-sub">Age 12 and above · At
+            <div><span class="rsvp-counter-title">Adults</span><span class="rsvp-counter-sub">Age 12 and above
               </span></div>
             <div class="rsvp-stepper"><button type="button" id="rsvp-adult-minus" aria-label="Remove one adult"
                 disabled>−</button><output class="rsvp-count" id="rsvp-adults" aria-live="polite">1</output><button
@@ -2112,7 +2112,7 @@
         clearTimeout(window.__rsvpT);
         window.__rsvpT = setTimeout(() => {
           if (!busy) return;
-          busy = false; btn.disabled = false; btn.textContent = 'Confirm RSVP';
+          busy = false; btn.disabled = false; btn.textContent = 'Confirm';
           setError('We could not confirm your RSVP. Please try again in a moment.');
         }, 15000);
       });
