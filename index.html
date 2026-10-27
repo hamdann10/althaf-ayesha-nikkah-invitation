@@ -1901,13 +1901,13 @@
       p.style.cssText = 'width:' + s + 'px;height:' + s + 'px;left:' + Math.random() * 100 + 'vw;--dx:' + (Math.random() * 160 - 80) + 'px;--rot:' + (Math.random() * 720) + 'deg;animation-duration:' + ((burst ? 5 : 9) + Math.random() * 8) + 's;animation-delay:' + (burst ? 0 : Math.random() * 8) + 's';
       (host || $('petals')).appendChild(p); if (burst) setTimeout(() => p.remove(), 14000)
     }
-    for (let i = 0; i < (innerWidth > 768 ? 10 : 7); i++)petal(false);
+    for (let i = 0; i < (innerWidth > 768 ? 10 : 8); i++)petal(false);
     for (let i = 0; i < 7; i++)petal(false, $('dp'));
 
     /* open doors */
     function open() {
       const d = $('doors'); if (d.classList.contains('open')) return; d.classList.add('open'); document.body.classList.add('opened');
-      for (let i = 0; i < 35; i++)petal(true);
+      for (let i = 0; i < 25; i++)petal(true);
       setTimeout(() => { d.style.display = 'none'; html.classList.remove('lock') }, 1700)
     }
     const bl = $('bloom'); let p = 0, holding = false, raf = 0, last = 0;
