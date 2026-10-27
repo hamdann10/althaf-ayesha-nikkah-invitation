@@ -453,6 +453,7 @@
       display: flex;
       gap: 10px;
       flex-wrap: nowrap;
+      text-align: center;
       justify-content: center;
       width: min(100%, 520px);
       margin: 22px auto 0;
@@ -1759,7 +1760,7 @@
       </h1>
       <p class="verse rv">“And among His signs is that He created for you mates from among yourselves, that you may find
         tranquility in them.”</p>
-      <div class="cd rv" id="cd"></div>
+
 
     </section>
 
@@ -1784,6 +1785,7 @@
 
       </div>
     </section>
+    <div class="cd rv" id="cd"></div>
 
     <section id="venue">
       <div class="arch rv">
@@ -1905,7 +1907,7 @@
     /* open doors */
     function open() {
       const d = $('doors'); if (d.classList.contains('open')) return; d.classList.add('open'); document.body.classList.add('opened');
-      for (let i = 0; i < 50; i++)petal(true);
+      for (let i = 0; i < 35; i++)petal(true);
       setTimeout(() => { d.style.display = 'none'; html.classList.remove('lock') }, 1700)
     }
     const bl = $('bloom'); let p = 0, holding = false, raf = 0, last = 0;
