@@ -15,8 +15,6 @@
 
 
 
-
-
   <style>
     :root {
       --bg: #FAF7F1;
@@ -407,30 +405,24 @@
     .nm,
     .family-names .nm {
       font-family: 'Pinyon Script', cursive !important;
-      font-size: clamp(3.2rem, 11vw, 4.8rem) !important;
+      font-size: clamp(3.4rem, 12vw, 5.1rem) !important;
       font-weight: 400 !important;
       text-transform: none !important;
+      line-height: 1.65 !important;
+      color: #203b25 !important;
+      background: none !important;
+      -webkit-text-fill-color: #203b25 !important;
+      -webkit-background-clip: initial !important;
+      background-clip: initial !important;
 
-      background: linear-gradient(100deg,
-          #203b25 30%,
-          #b49a58 50%,
-          #203b25 70%);
-      background-size: 250% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-
-      /* Keep the existing write animation's mask */
+      /* Reveal the name with the existing write animation; no shine effect. */
       -webkit-mask: linear-gradient(90deg, #000 40%, transparent 50%) 100% 0 / 250% 100% no-repeat;
       mask: linear-gradient(90deg, #000 40%, transparent 50%) 100% 0 / 250% 100% no-repeat;
     }
 
     .opened .n1,
     .opened .n2 {
-      animation:
-        shine 5s linear infinite,
-        write 2.2s cubic-bezier(.45, .05, .3, 1) .9s forwards;
+      animation: write 2.2s cubic-bezier(.45, .05, .3, 1) .9s forwards;
     }
 
     .opened .and {
@@ -1793,7 +1785,7 @@
 
     /* Triggered when the invitation doors open; each item follows the previous one. */
     body:has(#doors.open) .n1 {
-      animation: shine 5s linear infinite, write 2.2s cubic-bezier(.45, .05, .3, 1) .2s forwards !important;
+      animation: write 2.2s cubic-bezier(.45, .05, .3, 1) .2s forwards !important;
     }
 
     body:has(#doors.open) .name-group:first-child .family-details {
@@ -1809,7 +1801,7 @@
     }
 
     body:has(#doors.open) .n2 {
-      animation: shine 5s linear infinite, write 2.2s cubic-bezier(.45, .05, .3, 1) 4.15s forwards !important;
+      animation: write 2.2s cubic-bezier(.45, .05, .3, 1) 4.15s forwards !important;
     }
 
     body:has(#doors.open) .name-group:last-child .family-details {
@@ -1848,7 +1840,8 @@
       }
 
       .family-names .nm {
-        font-size: clamp(2.65rem, 10.8vw, 3.7rem) !important;
+        font-size: clamp(2.9rem, 11.5vw, 4rem) !important;
+        line-height: 1.65 !important;
       }
 
       .family-details,
@@ -1870,7 +1863,8 @@
       }
 
       .family-names .nm {
-        font-size: clamp(2.45rem, 10.5vw, 3.1rem) !important;
+        font-size: clamp(2.65rem, 11vw, 3.3rem) !important;
+        line-height: 1.65 !important;
       }
     }
 
