@@ -16,6 +16,7 @@
 
 
 
+
   <style>
     :root {
       --bg: #FAF7F1;
@@ -1750,6 +1751,136 @@
 
       .rsvp-btn {
         transition: none;
+      }
+    }
+
+
+    /* === Targeted mobile and name-sequence fixes === */
+    .family-names {
+      line-height: 1.5 !important;
+      overflow: visible !important;
+      padding-bottom: .12em;
+    }
+
+    .family-names .name-group {
+      display: block;
+      width: 100%;
+      overflow: visible;
+    }
+
+    .family-names .nm {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0.08em 0.12em 0.22em;
+      line-height: 1.5 !important;
+      overflow: visible;
+      white-space: nowrap;
+    }
+
+    .family-details,
+    .family-location {
+      opacity: 0;
+      transform: translateY(7px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .family-names .and {
+      opacity: 0;
+      margin: 10px 0;
+    }
+
+    /* Triggered when the invitation doors open; each item follows the previous one. */
+    body:has(#doors.open) .n1 {
+      animation: shine 5s linear infinite, write 2.2s cubic-bezier(.45, .05, .3, 1) .2s forwards !important;
+    }
+
+    body:has(#doors.open) .name-group:first-child .family-details {
+      animation: detailReveal .7s ease 2.55s forwards;
+    }
+
+    body:has(#doors.open) .name-group:first-child .family-location {
+      animation: detailReveal .7s ease 2.9s forwards;
+    }
+
+    body:has(#doors.open) .family-names .and {
+      animation: fadein .7s ease 3.65s forwards;
+    }
+
+    body:has(#doors.open) .n2 {
+      animation: shine 5s linear infinite, write 2.2s cubic-bezier(.45, .05, .3, 1) 4.15s forwards !important;
+    }
+
+    body:has(#doors.open) .name-group:last-child .family-details {
+      animation: detailReveal .7s ease 6.5s forwards;
+    }
+
+    body:has(#doors.open) .name-group:last-child .family-location {
+      animation: detailReveal .7s ease 6.85s forwards;
+    }
+
+    @keyframes detailReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .invite-line {
+        width: calc(100% + 16px);
+        max-width: 420px;
+        margin: 11px -8px 24px;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.55;
+        text-align: center;
+        overflow-wrap: normal;
+        word-break: normal;
+        text-wrap: balance;
+      }
+
+      .family-names {
+        width: 100%;
+        max-width: 100%;
+        padding-inline: 0;
+      }
+
+      .family-names .nm {
+        font-size: clamp(2.65rem, 10.8vw, 3.7rem) !important;
+      }
+
+      .family-details,
+      .family-location {
+        padding-inline: 8px;
+      }
+
+      .verse {
+        max-width: 100%;
+        padding-inline: 8px;
+        overflow-wrap: break-word;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .invite-line {
+        font-size: 13px;
+        padding-inline: 0;
+      }
+
+      .family-names .nm {
+        font-size: clamp(2.45rem, 10.5vw, 3.1rem) !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .family-details,
+      .family-location {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
       }
     }
   </style>
