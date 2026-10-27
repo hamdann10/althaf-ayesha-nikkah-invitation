@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Althaf & Ayesha · Nikkah Invitation</title>
+  <title>Ayesha & Althaf · Nikkah Invitation</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@600;700&family=Great+Vibes&display=swap"
     rel="stylesheet">
@@ -324,8 +324,14 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 10000;
+      z-index: 500;
       overflow: hidden
+    }
+
+    section,
+    .rsvp-card {
+      position: relative;
+      z-index: 1;
     }
 
     .petal {
@@ -333,7 +339,9 @@
       top: -30px;
       background: linear-gradient(135deg, #D9B9B4, #C9A354);
       border-radius: 80% 0 80% 0;
-      opacity: .55;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
       animation: fall linear infinite
     }
 
@@ -453,7 +461,6 @@
       display: flex;
       gap: 10px;
       flex-wrap: nowrap;
-      text-align: center;
       justify-content: center;
       width: min(100%, 520px);
       margin: 22px auto 0;
@@ -515,7 +522,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--rose);
-      animation: bob 2s infinite
+
     }
 
     h2 {
@@ -1435,6 +1442,14 @@
       font-size: .88rem;
     }
 
+    .rsvp-field-title {
+      display: block;
+      margin: 0 0 6px;
+      color: #493F34;
+      font-weight: 650;
+      font-size: .88rem;
+    }
+
     .rsvp-field input {
       display: block;
       width: 100%;
@@ -1451,6 +1466,72 @@
     .rsvp-field input:focus {
       outline: 3px solid rgba(184, 139, 54, .22);
       border-color: #A78343;
+    }
+
+    /* Compact, understated RSVP side selector */
+    .rsvp-side-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .rsvp-side-choice {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 0;
+      margin: 0 !important;
+      padding: 10px 12px;
+      border: 1px solid #D8C7A7;
+      border-radius: 10px;
+      background: #FFFEFB;
+      color: #493F34;
+      font-size: .86rem !important;
+      font-weight: 500 !important;
+      cursor: pointer;
+      transition: background .18s ease, border-color .18s ease;
+    }
+
+    .rsvp-side-choice input[type="radio"] {
+      appearance: auto;
+      -webkit-appearance: radio;
+      accent-color: #B88B36;
+      display: inline-block;
+      flex: 0 0 auto;
+      width: 16px;
+      min-height: 16px;
+      height: 16px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .rsvp-side-choice .rsvp-side-emoji {
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+
+    .rsvp-side-choice:has(input:checked) {
+      border-color: #B88B36;
+      background: #F1E5CD;
+    }
+
+    .rsvp-side-choice:focus-within {
+      outline: 3px solid rgba(184, 139, 54, .18);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 360px) {
+      .rsvp-side-options {
+        gap: 7px;
+      }
+
+      .rsvp-side-choice {
+        gap: 6px;
+        padding: 10px 7px;
+        font-size: .8rem !important;
+      }
     }
 
     .rsvp-counter {
@@ -1760,8 +1841,7 @@
       </h1>
       <p class="verse rv">“And among His signs is that He created for you mates from among yourselves, that you may find
         tranquility in them.”</p>
-
-
+      <div class="hint">Scroll</div>
     </section>
 
     <section id="details">
@@ -1782,10 +1862,9 @@
       <div class="reception-card rv">
         <h2>Reception</h2>
         <div class="reception-time">5:00 PM onwards</div>
-
       </div>
+      <div class="cd rv" id="cd"></div>
     </section>
-    <div class="cd rv" id="cd"></div>
 
     <section id="venue">
       <div class="arch rv">
@@ -1819,13 +1898,28 @@
               <label for="rsvp-name">Your name</label>
               <input id="rsvp-name" type="text" maxlength="60" autocomplete="name" placeholder="e.g. Hamdan" required>
             </div>
+            <div class="rsvp-field">
+              <span class="rsvp-field-title" id="rsvp-side-label">Which side are you from?</span>
+              <div class="rsvp-side-options" role="radiogroup" aria-labelledby="rsvp-side-label">
+                <label class="rsvp-side-choice">
+                  <input type="radio" name="side" value="Groom" required>
+                  <span class="rsvp-side-emoji" aria-hidden="true">👳🏻‍♂️</span>
+                  <span>Groom's side</span>
+                </label>
+                <label class="rsvp-side-choice">
+                  <input type="radio" name="side" value="Bride" required>
+                  <span class="rsvp-side-emoji" aria-hidden="true">🧕🏻</span>
+                  <span>Bride's side</span>
+                </label>
+              </div>
+            </div>
             <div class="rsvp-hp" aria-hidden="true"><label>Leave this empty <input id="rsvp-hp" type="text"
                   tabindex="-1" autocomplete="off"></label></div>
           </div>
 
           <div class="rsvp-counter" aria-label="Adults attending">
             <div><span class="rsvp-counter-title">Adults</span><span class="rsvp-counter-sub">Age 12 and above · At
-                least 1 adult</span></div>
+              </span></div>
             <div class="rsvp-stepper"><button type="button" id="rsvp-adult-minus" aria-label="Remove one adult"
                 disabled>−</button><output class="rsvp-count" id="rsvp-adults" aria-live="polite">1</output><button
                 type="button" id="rsvp-adult-plus" aria-label="Add one adult">+</button></div>
@@ -1991,6 +2085,13 @@
         if (busy) return;
         const name = $r('rsvp-name').value.trim().replace(/\s+/g, ' ');
         if (name.length < 2) { setError('Please enter your name.'); $r('rsvp-name').focus(); return; }
+        const side = document.querySelector('input[name="side"]:checked')?.value || '';
+        if (!side) {
+          setError('Please select the bride or groom side.');
+          const firstSideOption = document.querySelector('input[name="side"]');
+          if (firstSideOption) firstSideOption.focus();
+          return;
+        }
         const total = adults + children;
         if ($r('rsvp-hp').value) { showWelcome(name, total); return; } /* spam trap: pretend, send nothing */
         if (!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(RSVP_ENDPOINT)) {
@@ -2001,7 +2102,7 @@
 
         const form = document.createElement('form');
         form.method = 'POST'; form.action = RSVP_ENDPOINT; form.target = 'rsvp-submit-frame'; form.acceptCharset = 'UTF-8';
-        Object.entries({ name, adults, children, total }).forEach(([k, v]) => {
+        Object.entries({ name, side, adults, children, total }).forEach(([k, v]) => {
           const i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = String(v); form.appendChild(i);
         });
         document.body.appendChild(form); form.submit(); form.remove();
